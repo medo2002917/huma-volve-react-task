@@ -1,17 +1,20 @@
 type ButtonProps = {
   text: string;
-  onClick?: () => void;
+  onClick: () => void;
+  variant: "primary" | "secondary" | "danger";
   disabled?: boolean;
 };
 
 function Button({
   text,
   onClick,
+  variant,
   disabled = false,
 }: ButtonProps) {
   return (
     <button
       type="button"
+      className={`button button--${variant}`}
       onClick={onClick}
       disabled={disabled}
     >

@@ -1,29 +1,46 @@
-import { useState } from "react";
 import Button from "./components/ui/Button";
-import Input from "./components/ui/Input";
+import Card from "./components/ui/Card";
+import Table from "./components/ui/Table";
+
+const students = [
+  { Name: "Ahmed", Age: 22, City: "Cairo" },
+  { Name: "Mona", Age: 21, City: "Giza" },
+  { Name: "Omar", Age: 23, City: "Alexandria" },
+];
 
 function App() {
-  const [name, setName] = useState("");
-
   return (
-    <main>
-      <h1>Huma Volve React Training</h1>
+    <main className="app">
+      <h1>Reusable Components in React</h1>
 
-      <Input
-        label="Your Name"
-        placeholder="Enter your name"
-        value={name}
-        onChange={setName}
-      />
+      <section className="cards" aria-label="Example cards">
+        <Card
+          title="React"
+          description="A JavaScript library for building user interfaces."
+        >
+          <Button
+            text="Learn React"
+            variant="primary"
+            onClick={() => alert("React button clicked!")}
+          />
+        </Card>
 
-      <p>Hello, {name || "Guest"}!</p>
+        <Card
+          title="TypeScript"
+          description="JavaScript with static type checking."
+        >
+          <Button
+            text="Learn TypeScript"
+            variant="secondary"
+            onClick={() => alert("TypeScript button clicked!")}
+          />
+        </Card>
+      </section>
 
-      <Button
-        text="Say Hello"
-        onClick={() => alert(`Hello, ${name || "Guest"}!`)}
-      />
-
-      <Button text="Disabled Button" disabled />
+      <section aria-label="Students table">
+        <h2>Students</h2>
+        <Table columns={["Name", "Age", "City"]} data={students} striped />
+      </section>
     </main>
   );
 }
